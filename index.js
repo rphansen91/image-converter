@@ -18,6 +18,15 @@
 
 		input.imageBefore.onload = function () {
 
+			input.canvasCtx.transform(1, 0, 0, 1, 0, 0);
+			input.canvasCtx.transform(-1, 0, 0, 1, input.canvas.width, 0);
+			input.canvasCtx.transform(-1, 0, 0, -1, input.canvas.width, input.canvas.height );
+			input.canvasCtx.transform(1, 0, 0, -1, 0, input.canvas.height );
+			input.canvasCtx.transform(0, 1, 1, 0, 0, 0);
+			input.canvasCtx.transform(0, 1, -1, 0, input.canvas.height , 0);
+			input.canvasCtx.transform(0, -1, -1, 0, input.canvas.height , input.canvas.width);
+			input.canvasCtx.transform(0, -1, 1, 0, 0, input.canvas.width);
+
 			input.canvasCtx.drawImage(
 				input.imageBefore, 
 				calculator.getPosition(input.imageBefore).x,
@@ -28,15 +37,6 @@
 				input.canvas.width, 
 				input.canvas.height
 			)
-
-			input.canvasCtx.transform(1, 0, 0, 1, 0, 0);
-			input.canvasCtx.transform(-1, 0, 0, 1, input.canvas.width, 0);
-			input.canvasCtx.transform(-1, 0, 0, -1, input.canvas.width, input.canvas.height );
-			input.canvasCtx.transform(1, 0, 0, -1, 0, input.canvas.height );
-			input.canvasCtx.transform(0, 1, 1, 0, 0, 0);
-			input.canvasCtx.transform(0, 1, -1, 0, input.canvas.height , 0);
-			input.canvasCtx.transform(0, -1, -1, 0, input.canvas.height , input.canvas.width);
-			input.canvasCtx.transform(0, -1, 1, 0, 0, input.canvas.width);
 
 			imageAfter.src =  input.canvas.toDataURL("image/jpeg", 0.8)
 		}
